@@ -12,7 +12,7 @@ export type TranslationEntry = {
   value: string;
 };
 
-type JSONValue =
+export type JSONValue =
   | string
   | number
   | boolean
@@ -53,7 +53,7 @@ export const unFlattenJSON = (
 
   for (const flatKey in flatObj) {
     const keys = flatKey.split(".");
-    let current: any = result;
+    let current: Record<string, unknown> = result;
 
     keys.forEach((key, index) => {
       const isLast = index === keys.length - 1;
@@ -64,7 +64,7 @@ export const unFlattenJSON = (
         current[normalizedKey] = flatObj[flatKey];
       } else {
         if (!current[normalizedKey]) current[normalizedKey] = {};
-        current = current[normalizedKey];
+        current = current[normalizedKey] as Record<string, unknown>;
       }
     });
   }

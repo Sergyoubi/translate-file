@@ -2,7 +2,7 @@
 
 import { appendKeyAndValueToFile, saveNewFile } from "@/actions/files";
 import { FileUpload } from "@/components/ui/file-upload";
-import { flattenJSON } from "@/lib/utils";
+import { flattenJSON, JSONValue } from "@/lib/utils";
 import React, { useState } from "react";
 import { LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -49,8 +49,10 @@ const Dashboard = () => {
       // Process each files sequentially
       for (const file of fileData) {
         try {
-          const flattened = await flattenJSON(file.content);
-          // 1- Save file in DB
+          const flattened = await flattenJSON(
+            file.content as Record<string, JSONValue>
+          );
+          // 1- Save file in
           const savedFile = await saveNewFile(file.name);
 
           if (savedFile?.status === 201 && savedFile.fileId) {
