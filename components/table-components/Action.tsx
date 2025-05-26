@@ -36,10 +36,10 @@ const Action = ({ id, value }: { id: string; value: string }) => {
         setIsUpdateLoading(false);
         setText("");
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsUpdateLoading(false);
       console.log(
-        `Error from Action.tsx/handleTranslationUpdate()! Error: ${error.message}`
+        `Error from Action.tsx/handleTranslationUpdate()! Error: ${error}`
       );
     }
   };
@@ -52,10 +52,10 @@ const Action = ({ id, value }: { id: string; value: string }) => {
       if (response?.status === 200) {
         setIsDeleteLoading(false);
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsDeleteLoading(false);
       console.log(
-        `Error from Action.tsx/handleClickOnDeleteButton()! Error: ${error.message}`
+        `Error from Action.tsx/handleClickOnDeleteButton()! Error: ${error}`
       );
     }
   };
@@ -72,11 +72,9 @@ const Action = ({ id, value }: { id: string; value: string }) => {
           setIsUpdateLoading(false);
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsUpdateLoading(false);
-      console.log(
-        `Error from Action.tsx/handleClickOnUSA()! Error: ${error.message}`
-      );
+      console.log(`Error from Action.tsx/handleClickOnUSA()! Error: ${error}`);
     }
   };
 
@@ -92,11 +90,9 @@ const Action = ({ id, value }: { id: string; value: string }) => {
           setIsUpdateLoading(false);
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsUpdateLoading(false);
-      console.log(
-        `Error from Action.tsx/handleClickOnUSA()! Error: ${error.message}`
-      );
+      console.log(`Error from Action.tsx/handleClickOnUSA()! Error: ${error}`);
     }
   };
 
@@ -112,11 +108,9 @@ const Action = ({ id, value }: { id: string; value: string }) => {
           setIsUpdateLoading(false);
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsUpdateLoading(false);
-      console.log(
-        `Error from Action.tsx/handleClickOnUSA()! Error: ${error.message}`
-      );
+      console.log(`Error from Action.tsx/handleClickOnUSA()! Error: ${error}`);
     }
   };
 

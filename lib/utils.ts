@@ -12,12 +12,20 @@ export type TranslationEntry = {
   value: string;
 };
 
+type JSONValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JSONValue[]
+  | { [key: string]: JSONValue };
+
 export const flattenJSON = async (
-  obj: any,
+  obj: Record<string, JSONValue>,
   parentKey = "",
-  flatenContent: any = {}
-) => {
-  for (let key in obj) {
+  flatenContent: Record<string, JSONValue> = {}
+): Promise<Record<string, JSONValue>> => {
+  for (const key in obj) {
     const propKey = parentKey ? `${parentKey}.${key}` : key;
 
     if (
@@ -25,7 +33,11 @@ export const flattenJSON = async (
       obj[key] !== null &&
       !Array.isArray(obj[key])
     ) {
-      flattenJSON(obj[key], propKey, flatenContent);
+      await flattenJSON(
+        obj[key] as Record<string, JSONValue>,
+        propKey,
+        flatenContent
+      );
     } else {
       flatenContent[propKey] = obj[key];
     }
@@ -34,18 +46,18 @@ export const flattenJSON = async (
   return flatenContent;
 };
 
-export const unFlattenJSON = (flatObj: Record<string, string>) => {
-  const result: Record<string, any> = {};
+export const unFlattenJSON = (
+  flatObj: Record<string, JSONValue>
+): Record<string, JSONValue> => {
+  const result: Record<string, JSONValue> = {};
 
   for (const flatKey in flatObj) {
     const keys = flatKey.split(".");
-    let current = result;
+    let current: any = result;
 
     keys.forEach((key, index) => {
       const isLast = index === keys.length - 1;
       const keyIsNumber = !isNaN(Number(key));
-
-      // Handle numeric keys as object keys (not arrays) for i18n compatibility
       const normalizedKey = keyIsNumber ? String(key) : key;
 
       if (isLast) {
@@ -67,14 +79,14 @@ export const exportTranslationsAsJSON = (
     onFinish?: () => void;
     onError?: (error: unknown) => void;
   }
-) => {
+): void => {
   try {
     options?.onStart?.();
 
     const flatObj: Record<string, string> = {};
-    entries.forEach(({ key, value }) => {
+    for (const { key, value } of entries) {
       flatObj[key] = value;
-    });
+    }
 
     const nestedObj = unFlattenJSON(flatObj);
     const jsonStr = JSON.stringify(nestedObj, null, 2);

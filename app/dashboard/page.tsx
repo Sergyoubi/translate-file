@@ -27,8 +27,8 @@ const Dashboard = () => {
         try {
           const json = JSON.parse(text);
           return { name: file.name, content: json };
-        } catch (error: any) {
-          console.error(`Error parsing ${file.name}:`, error.message);
+        } catch (error) {
+          console.error(`Error parsing ${file.name}:`, error);
           return null;
         }
       });
@@ -78,8 +78,8 @@ const Dashboard = () => {
           } else {
             throw new Error(`Failed to save file: ${file.name}`);
           }
-        } catch (error: any) {
-          console.error(`Error processing ${file.name}:`, error.message);
+        } catch (error) {
+          console.error(`Error processing ${file.name}:`, error);
           setError(`Failed to process ${file.name}`);
         }
       }
@@ -97,11 +97,11 @@ const Dashboard = () => {
         throw new Error("No valid JSON files were parsed");
       }
       await saveParsedData(parsedData);
-    } catch (error: any) {
+    } catch (error) {
       setIsLoading(false);
       setStatus("error");
       setError("File upload error");
-      console.error(`Error handling file. Error ${error.message} `);
+      console.error(`Error handling file. Error ${error} `);
     }
   };
 
@@ -114,8 +114,13 @@ const Dashboard = () => {
           </p>
         </div>
       ) : (
-        <div className="w-[80%] h-[50%] border border-slate-100 rounded-lg flex-center mt-10">
+        <div className="w-[80%] h-[50%] border border-slate-100 rounded-lg flex flex-col justify-center items-center mt-10">
           <FileUpload onChange={handleFileUpload} />
+          {error ? (
+            <p className="text-red-400 text-2xl font-extralight mt-12">
+              File Upload error
+            </p>
+          ) : null}
         </div>
       )}
     </div>

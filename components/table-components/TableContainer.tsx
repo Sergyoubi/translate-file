@@ -57,16 +57,6 @@ export const TableContainer = <TData, TValue>({
       },
     },
   });
-  /*
-  const exportAsJSONFile = () => {
-    try {
-    exportTranslationsAsJSON(data as TranslationEntry[]);
-      
-    } catch (error: any) {
-      console.log(`We have an issue exporting file. Error: ${error.message}`);
-    }
-  };
-  */
 
   const exportAsJSONFile = async () => {
     try {
@@ -78,8 +68,8 @@ export const TableContainer = <TData, TValue>({
           console.log(`Export failed: ${error}`);
         },
       });
-    } catch (error: any) {
-      console.log(`We have an issue exporting file. Error: ${error.message}`);
+    } catch (error) {
+      console.log(`We have an issue exporting file. Error: ${error}`);
     }
   };
 
