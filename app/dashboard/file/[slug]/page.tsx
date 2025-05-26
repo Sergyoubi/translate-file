@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
+
   const fileData = await getFileContent(slug);
 
   return (
