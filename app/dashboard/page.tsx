@@ -47,7 +47,7 @@ const Dashboard = () => {
     try {
       setStatus("parsing");
       // Process each files sequentially
-      /* 
+
       for (const file of fileData) {
         try {
           const flattened = await flattenJSON(
@@ -86,9 +86,8 @@ const Dashboard = () => {
           setError(`Failed to process ${file.name}`);
         }
       }
-        */
     } finally {
-      //setStatus("idle");
+      setStatus("idle");
     }
   };
 
