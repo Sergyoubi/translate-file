@@ -53,7 +53,7 @@ export const TableContainer = <TData, TValue>({
     },
     initialState: {
       pagination: {
-        pageSize: 6,
+        pageSize: 10,
       },
     },
   });
