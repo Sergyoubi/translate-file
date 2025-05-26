@@ -18,7 +18,7 @@ const Sidebar = async () => {
           Dashboard
         </p>
       </Link>
-      <FileSelect fileData={listOfTranslationFiles.filesIdAndName} />
+      <FileSelect fileData={listOfTranslationFiles?.filesIdAndName} />
     </div>
   );
 };

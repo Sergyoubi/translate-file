@@ -47,6 +47,7 @@ const Dashboard = () => {
     try {
       setStatus("parsing");
       // Process each files sequentially
+      /* 
       for (const file of fileData) {
         try {
           const flattened = await flattenJSON(
@@ -85,8 +86,9 @@ const Dashboard = () => {
           setError(`Failed to process ${file.name}`);
         }
       }
+        */
     } finally {
-      setStatus("idle");
+      //setStatus("idle");
     }
   };
 
@@ -111,8 +113,9 @@ const Dashboard = () => {
     <div className="w-full h-full flex flex-col justify-start items-center">
       {status === "parsing" || isLoading ? (
         <div className="w-[80%] h-[80%] flex-center mt-10">
-          <p className="font-semibold flex gap-2">
-            Parsing file <LoaderCircle className="size-6 animate-spin" />
+          <p className="font-extralight flex-center gap-2 ">
+            <LoaderCircle className="size-4 animate-spin" />
+            <span className="animate-pulse">Extracting contents...</span>
           </p>
         </div>
       ) : (

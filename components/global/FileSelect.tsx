@@ -18,7 +18,7 @@ type TypeofFileData = {
 const FileSelect = ({ fileData }: TypeofFileData) => {
   const router = useRouter();
   const handleFileSelect = (fileName: string) => {
-    const selectedFile = fileData?.find((file) => file.fileName === fileName);
+    const selectedFile = fileData?.find((file) => file?.fileName === fileName);
     if (selectedFile) {
       router.push(`/dashboard/file/${selectedFile.id}`);
     }
@@ -31,8 +31,8 @@ const FileSelect = ({ fileData }: TypeofFileData) => {
       </SelectTrigger>
       <SelectContent>
         {fileData?.map((file) => (
-          <SelectItem key={file.id} value={file.fileName}>
-            {file.fileName}
+          <SelectItem key={file?.id} value={file?.fileName}>
+            {file?.fileName}
           </SelectItem>
         ))}
       </SelectContent>
