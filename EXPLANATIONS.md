@@ -25,6 +25,13 @@ Each Translation stores one translation key and its value.
 - Using Zero Sync (powerful JavaScript sync engine from the RepliCache team) that update database as user type/modify contents.
   No need to use ORM for mutations
 
+# TECH STACK:
+
+- Front-end: NextJS, TailwindCSS, ShadCN, Tanstack Table
+- Back-end: NextJS
+- Database: Postgres (Neon.tech)
+- ORM: Prisma
+
 # Run app locally:
 
 - Clone the repository : git clone....
