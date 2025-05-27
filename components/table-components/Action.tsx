@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MoreHorizontal, LoaderCircle } from "lucide-react";
+import { MoreHorizontal, LoaderCircle, Pencil } from "lucide-react";
 import {
   deleteTranslation,
   translateToEnglish,
@@ -152,7 +152,9 @@ const Action = ({ id, value }: { id: string; value: string }) => {
                       />
                     </TooltipTrigger>
                     <TooltipContent className="bg-violet-600">
-                      <p>Click to Translate</p>
+                      <p className="flex-center gap-1">
+                        <Pencil className="size-4" /> Click to Translate
+                      </p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -167,7 +169,9 @@ const Action = ({ id, value }: { id: string; value: string }) => {
                       />
                     </TooltipTrigger>
                     <TooltipContent className="bg-violet-600">
-                      <p>Click to Translate with AI</p>
+                      <p className="flex-center gap-1">
+                        <Pencil className="size-4" /> Click to Translate
+                      </p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -182,7 +186,9 @@ const Action = ({ id, value }: { id: string; value: string }) => {
                       />
                     </TooltipTrigger>
                     <TooltipContent className="bg-violet-600">
-                      <p>Click to Translate with AI</p>
+                      <p className="flex-center gap-1">
+                        <Pencil className="size-4" /> Click to Translate
+                      </p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
