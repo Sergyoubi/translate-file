@@ -22,8 +22,9 @@ Each Translation stores one translation key and its value.
 
 # Feature I would you suggest if I were to start again
 
-- Using Zero Sync (powerful JavaScript sync engine from the RepliCache team) that update database as user type/modify contents.
+- Use Zero Sync (powerful JavaScript sync engine from the RepliCache team) that update database as user type/modify contents.
   No need to use ORM for mutations
+- Use TanstackQuery to better handle data fetching and data caching
 
 # TECH STACK:
 
