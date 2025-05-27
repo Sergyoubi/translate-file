@@ -196,7 +196,7 @@ const Action = ({ id, value }: { id: string; value: string }) => {
             </section>
           </div>
           <Button
-            className="w-full cursor-pointer"
+            className="w-[40%] cursor-pointer"
             onClick={handleClickOnSaveButton}
             disabled={!text || isUpdateLoading}
           >
@@ -208,7 +208,7 @@ const Action = ({ id, value }: { id: string; value: string }) => {
           </Button>
           <Button
             variant="ghost"
-            className="w-full border border-red-300 hover:bg-red-100 text-rose-400 cursor-pointer"
+            className="w-[40%] border border-red-300 hover:bg-red-100 text-rose-400 hover:text-red-600 cursor-pointer"
             disabled={isDeleteLoading || isUpdateLoading}
             onClick={handleClickOnDeleteButton}
           >
